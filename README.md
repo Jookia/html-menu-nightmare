@@ -153,25 +153,14 @@ I would consider this a fail due to text being read twice in NVDA.
 TODO
 ----
 
-approach 1:
-- click button/link
-- update content
-- move to new content
+More approaches to try:
 
-operations 2:
-- click button/link
-
-- move to new content
-
-
-- editing the DOM in place?
-- links vs buttons
-
-two pages:
-- one has one button and 
-
-buttons? links? anchors? .focus? tabindex=-1?
-aria?
-
-can't be that hard ... right?
-aria-live doesn't work if text doesn't update!
+- Approach 4: Using buttons instead of links
+- Approach 5: Using a dummy anchor in JavaScript
+- Approach 6: Using location.href
+- Approach 7: Focusing paragraphs instead of using anchors
+- Approach 8: Dummy focus and live region for announcing shadow paragraph (test self links!)
+- Approach 9: Updating content in place (how does focusing work?)
+- Approach 10: Updating content in a specific order
+- Approach 11: Flipping content
+- Approach 12: Refreshing single page
