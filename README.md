@@ -90,6 +90,38 @@ possibly related to reporting where the current cursor is element-wise.
 This is not a pass or fail, just a baseline approach to compare other solutions
 to.
 
+Approach 1: Multiple pages, no anchors
+----------------------------------------
+
+Link: [Approach 1 HTML](approach1/start.html)
+
+This tries to solve the problem of inconsistent behaviour by only having one
+link type: Go to a new page.
+
+Intentions:
+
+- Each page should be read is in its entirety
+- Tab should cycle through links
+
+Problems:
+
+- The 'page is loading' notifications is a bit distracting
+- Orca reads first page in its entirety
+- Orca cancels tabbing if the reader is reading the first page
+- Narrator with Edge does not read the page automatically at all
+- Narrator with Firefox does not read the page automatically at all
+- Narrator with Chrome always reads the entire page on load
+- NVDA moves focus when reading links
+- NVDA blocks link clicking if it's reading something else
+- NVDA acts the same across browsers in this test
+
+The main insight here is that by dropping anchor links a lot of the
+inconsistency seen in screen readers disappears. More importantly, this
+behaviour matches the regular behaviour people expect in a typical browse.
+
+I would say this passes, however there is no way to easily update the elemnts
+based on client side JavaScript.
+
 TODO
 ----
 
