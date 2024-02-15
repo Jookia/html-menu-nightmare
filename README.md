@@ -122,6 +122,34 @@ behaviour matches the regular behaviour people expect in a typical browse.
 I would say this passes, however there is no way to easily update the elemnts
 based on client side JavaScript.
 
+Approach 2: Single page
+-----------------------
+
+Link: [Approach 2 HTML](approach2/start.html#start)
+
+This approach uses anchors only on a single page. Because it's a static page
+it includes all available options which isn't suitable for a dynamic
+application, but I will ignore that for now.
+
+Intentions:
+
+- Only the first paragraph of text per section should be read
+- Browse mode should be used to read subsequent text
+- Tab should cycle through links
+
+Problems:
+- Orca with Firefox speaks 'Document web' after a link press
+- Narrator with Firefox speaks the page title after a link press
+- Narrator with Chrome doesn't speak the anchored text
+- NVDA moves focus when reading links
+- NVDA blocks link clicking if it's reading something else
+- NVDA on Edge speaks the paragraph of text twice
+
+This is certainly cutting down on the problems, but the page now suffers from
+reading duplicate text in NVDA and no text on Narrator. 
+
+I would consider this a fail due to text being read twice in NVDA.
+
 TODO
 ----
 
