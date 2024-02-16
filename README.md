@@ -111,16 +111,17 @@ Problems:
 - Narrator with Edge does not read the page automatically at all
 - Narrator with Firefox does not read the page automatically at all
 - Narrator with Chrome always reads the entire page on load
+- NVDA with Edge does not read the page automatically at all
+- NVDA with Firefox does not read the page automatically at all
+- NVDA with Firefox skips text sometimes
 - NVDA moves focus when reading links
 - NVDA blocks link clicking if it's reading something else
-- NVDA acts the same across browsers in this test
 
 The main insight here is that by dropping anchor links a lot of the
 inconsistency seen in screen readers disappears. More importantly, this
 behaviour matches the regular behaviour people expect in a typical browse.
 
-I would say this passes, however there is no way to easily update the elemnts
-based on client side JavaScript.
+I wouldn't say this passes as it skips text.
 
 Approach 2: Single page
 -----------------------
