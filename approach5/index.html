@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Approach 5</title>
+<script>
+	window.onload = () => {
+		document.querySelectorAll('button').forEach((elem) => {
+			elem.onclick = (_) => {
+				href = elem.dataset['href'];
+				document.querySelector(href).focus();
+			};
+		});
+	};
+</script>
+</head>
+<body>
+	<h1>Start</h1>
+	<p id="start" tabindex="-1"></p>
+	<p>This is the start of the link maze!</p>
+	<p>Hit tab to go through the available links.</p>
+	<button data-href="#lost">Get lost in the maze</button>
+	<button data-href="#end">Go directly to maze end</button>
+	<button data-href="#start">Stay at the start</button>
+	<h1>Lost</h1>
+	<p id="lost" tabindex="-1"></p>
+	<p>You're lost in the maze!</p>
+	<button data-href="#end">Go to the end of the maze</button>
+	<h1>End</h1>
+	<p id="end" tabindex="-1"></p>
+	<p>You made it out!</p>
+	<button data-href="#start">Go back to the start</button>
+	<button data-href="#lost">Get lost in the maze again</button>
+</body>
+</html>

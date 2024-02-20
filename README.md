@@ -91,7 +91,7 @@ This is not a pass or fail, just a baseline approach to compare other solutions
 to.
 
 Approach 1: Multiple pages, no anchors
-----------------------------------------
+--------------------------------------
 
 Link: [Approach 1 HTML](approach1/start.html)
 
@@ -139,6 +139,7 @@ Intentions:
 - Tab should cycle through links
 
 Problems:
+- Orca cancels tabbing if the reader is reading the first page
 - Orca with Firefox speaks 'Document web' after a link press
 - Narrator with Firefox speaks the page title after a link press
 - Narrator with Chrome doesn't speak the anchored text
@@ -151,17 +152,86 @@ reading duplicate text in NVDA and no text on Narrator.
 
 I would consider this a fail due to text being read twice in NVDA.
 
+Approach 3: Single page, buttons
+--------------------------------
+
+Link: [Approach 3 HTML](approach3/start.html#start)
+
+Elements that interactively change state shouldn't be links but instead
+buttons. This approach is the same as approach 2 but using JavaScript to set
+the window location.
+
+Intentions:
+
+- It should run navigate the same as approach 2
+
+This works as expected. Setting the window location instead of an anchor gives
+identical behaviour with these screen readers.
+
+Approach 4: Focusing paragraphs
+-------------------------------
+
+Link: [Approach 4 HTML](approach4/start.html)
+
+Elements that interactively change state shouldn't be links but instead
+buttons. This approach is the same as approach 2 but using JavaScript to set
+the window location.
+
+Intentions:
+
+- It should reliably speak the paragraph
+
+Problems:
+
+- Orca cancels tabbing if the reader is reading the first page
+- Orca with Chromium reads the paragraph twice
+- Orca with Chromium adds 'clickable' after the paragraph
+- Narrator with Edge adds 'grou' after a paragraph is read
+- Narrator with Firefox doesn't read the paragraph text
+- NVDA moves focus when reading links
+- NVDA blocks link clicking if it's reading something else
+
+This solution has the least amount of quirks so far, but still unacceptable
+as it reads text twice, not at all and announces a false clickable.
+
+Approach 5: Focusing paragraphs, empty
+--------------------------------------
+
+Link: [Approach 5 HTML](approach5/start.html)
+
+Decoupling focusing of the page with reading the text could help turn this
+in to two issues rather than one. Though having focus with no notification is
+arguably a bad idea, it's worth testing to see if it works.
+
+Intentions:
+
+- It should silently move the focus to above the text
+- The text should be readable using line navigation
+
+Problems:
+
+- Orca cancels tabbing if the reader is reading the first page
+- Orca with Chromium says 'clickable'
+- Narrator with Edge says 'grou'
+- Narrator with Chrome says 'text'
+- Narrator with Firefox says 'text'
+- NVDA moves focus when reading links
+- NVDA blocks link clicking if it's reading something else
+- NVDA reads 'blank'
+- NVDA skips the next line of text in line navigation
+
+This solution on its own is unusable, but maybe with reading other text it
+would be workable. It is problematic that NVDA skips the next line of text.
+
 TODO
 ----
 
 More approaches to try:
 
-- Approach 4: Using buttons instead of links
-- Approach 5: Using a dummy anchor in JavaScript
-- Approach 6: Using location.href
-- Approach 7: Focusing paragraphs instead of using anchors
-- Approach 8: Dummy focus and live region for announcing shadow paragraph (test self links!)
-- Approach 9: Updating content in place (how does focusing work?)
-- Approach 10: Updating content in a specific order
-- Approach 11: Flipping content
-- Approach 12: Refreshing single page
+- Approach 6: IFrames
+- Approach 7: Updating content in place with anchor buttons
+- Approach 8: Updating content in a specific order
+- Approach 9: Buffering content updates
+- Approach 10: Empty paragraphs and ARIA live regions
+- Approach 11: ARIA region repeats
+- Approach 12: ARIA focus grabbing
