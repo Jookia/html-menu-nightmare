@@ -235,3 +235,5 @@ More approaches to try:
 - Approach 10: Empty paragraphs and ARIA live regions
 - Approach 11: ARIA region repeats
 - Approach 12: ARIA focus grabbing
+
+These don't work I just wanted to document them.
